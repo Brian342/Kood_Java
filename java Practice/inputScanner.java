@@ -45,8 +45,3 @@ public class inputScanner {
     
 }
 
-/* git status
-    git add .
-    git commit -am "new code update"
-    git push
-  */
