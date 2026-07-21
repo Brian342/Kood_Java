@@ -12,7 +12,12 @@ public class inputScanner {
         System.out.print("Enter your Age: ");
         int age = scanner.nextInt();
 
-        System.out.print("What is your GPA?: ");
+        scanner.nextLine();
+
+        System.out.println("Enter your Favourite Color: ");
+        String color = scanner.nextLine();
+
+        System.out.println("What is your GPA?: ");
         double gpa = scanner.nextDouble();
 
         System.out.print("Are you a Student true/false: ");
@@ -28,6 +33,8 @@ public class inputScanner {
             System.out.println("You are NOT enrolled as a Student!");
         }
 
+        System.out.println("Your Favourite color is: "+ color);
+
 
 
 
@@ -37,3 +44,9 @@ public class inputScanner {
     }
     
 }
+
+/* git status
+    git add .
+    git commit -am "new code update"
+    git push
+  */
