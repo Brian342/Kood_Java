@@ -30,6 +30,7 @@ public class CharCounter {
                 }
             }
             return count;
+            ""
     }
     public static void main(String[] args){
             // creating a user input object
