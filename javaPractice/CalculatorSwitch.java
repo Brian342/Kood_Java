@@ -8,6 +8,7 @@ public class CalculatorSwitch {
     public static int calculator(){
 
         Scanner scanner = new Scanner(System.in);
+
         System.out.print("Enter your operator(+,-,*,/,%,^): ");
         char op = scanner.nextLine().charAt(0);
 
@@ -43,12 +44,10 @@ public class CalculatorSwitch {
             }
         };
 
-
-        }
+    }
     public static void main(String[] args){
         int res = calculator();
         System.out.println("Result "+ res);
-
 
 
 
