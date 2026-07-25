@@ -6,6 +6,23 @@ public class CypherTool {
     public static void main(String[] args){
         InputData input =  getInput();
 
+        // encryption code
+        String res = ""; // placeholder for the message string
+
+        if(input.operation == 1){
+            res = switch(input.choice){
+               case 1 -> encryptRot13(input.message);
+               case 2 -> encryptAtbash(input.message);
+               default -> "Invalid Choice of encyption";
+           };
+// decryption of the message
+        }else if(input.operation == 2){
+            res = switch (input.choice){
+                case 1 -> decryptRot13(input.message);
+                case 2 -> decryptAtbash(input.message);
+                default -> "Invalid choice of decyption";
+            };
+        }
 
     }
     public static InputData getInput(){
@@ -40,17 +57,17 @@ public class CypherTool {
     }
     public static String encryptRot13(String s){
 
-        return "";
+        return "Hello Rot13";
     }
     public static String encryptAtbash(String s){
-        return "";
+        return "Hello AtBash";
     }
 
     public static String decryptRot13(String s){
-        return "";
+        return "Hello decyptRot";
     }
     public static String decryptAtbash(String s){
-        return "";
+        return "Hello decyptAtBash";
     }
 }
 
