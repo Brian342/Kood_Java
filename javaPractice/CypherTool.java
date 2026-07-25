@@ -120,14 +120,35 @@ public class CypherTool {
         return sb.toString();
     }
     public static String encryptAtbash(String s){
-        s = " Hello AtBash";
+        if(s == null || s.isEmpty()){
+            System.exit(0);
+        }
+        StringBuilder sb = new StringBuilder();
+
+        // handling upper case
+        for(char ch: s.toCharArray()){
+            if(ch >= 'A' && ch <= 'Z'){
+                char encrypted = (char) ('Z' - (ch - 'A'));
+                sb.append(encrypted);
+
+                //Handling lower case
+            }else if(ch >= 'a' && ch <= 'z'){
+                char encrypted = (char) ('a' - (ch - 'a'));
+                sb.append(encrypted);
+
+            }else{
+                sb.append(ch);
+            }
+
+        }
 
         System.out.println();
         System.out.println("Message after encrypted");
-        return s;
+        return sb.toString();
     }
 
     public static String decryptRot13(String s){
+
         s = " Hello decryptRot";
 
         System.out.println();
