@@ -31,7 +31,7 @@ public class CypherTool {
         System.out.print("Enter your message: ");
         String message = scanner.nextLine();
 
-        return new InputData();
+        return new InputData(operation, choice, message);
     }
     public static String encryptRot13(String s){
 
