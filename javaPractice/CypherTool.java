@@ -6,6 +6,7 @@ public class CypherTool {
     public static void main(String[] args){
         InputData input =  getInput();
 
+
     }
     public static InputData getInput(){
         Scanner scanner = new Scanner(System.in);
@@ -13,19 +14,19 @@ public class CypherTool {
         int choice;
         System.out.println("Welcome to the Cypher Tool! ");
 
-        System.out.println("""
+        System.out.print("""
                 Select operation:
                 1. Encrypt
                 2. Decrypt
-                """);
+                :\s""");
         operation = scanner.nextInt();
 
-        System.out.println("""
+        System.out.print("""
                 Select Cypher:
                 1. ROT13
                 2. Atbash
                 3. encryption_of_your_choice
-                """);
+                :\s""");
 
         choice = scanner.nextInt();
 
@@ -33,6 +34,7 @@ public class CypherTool {
 
         System.out.print("Enter your message: ");
         String message = scanner.nextLine();
+        System.out.print(message);
 
         return new InputData(operation, choice, message);
     }
