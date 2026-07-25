@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class CypherTool {
     public static void main(String[] args){
+        InputData input =  getInput();
 
     }
     public static InputData getInput(){
@@ -27,6 +28,8 @@ public class CypherTool {
                 """);
 
         choice = scanner.nextInt();
+
+        scanner.nextLine();
 
         System.out.print("Enter your message: ");
         String message = scanner.nextLine();
