@@ -25,7 +25,7 @@ public class CypherTool {
             }
 
             System.out.println(res);
-        };
+        }
 
     public static InputData getInput() {
         Scanner scanner = new Scanner(System.in);
@@ -59,16 +59,17 @@ public class CypherTool {
                     Select Cypher:
                     1. ROT13
                     2. Atbash
-                    3. encryption_of_your_choice
+                    3. Caesar cypher
+                    4. Any other cypher
                     :>\s""");
 
             if (scanner.hasNext()) {
                 choice = scanner.nextInt();
 
-                if (choice == 1 || choice == 2 || choice == 3) {
+                if (choice == 1 || choice == 2 || choice == 3 || choice == 4) {
                     break;
                 } else {
-                    System.out.println("Invalid choice! Please select 1, 2 or 3.\n");
+                    System.out.println("Invalid choice! Please select 1, 2, 3 or 4.\n");
                 }
 
             } else {
@@ -120,6 +121,7 @@ public class CypherTool {
         return sb.toString();
     }
     public static String encryptAtbash(String s){
+
         if(s == null || s.isEmpty()){
             System.exit(0);
         }
@@ -133,8 +135,69 @@ public class CypherTool {
 
                 //Handling lower case
             }else if(ch >= 'a' && ch <= 'z'){
-                char encrypted = (char) ('a' - (ch - 'a'));
+                char encrypted = (char) ('z' - (ch - 'a'));
                 sb.append(encrypted);
+
+            }else{
+                sb.append(ch);
+            }
+
+        }
+        System.out.println();
+        System.out.println("Message after encrypted");
+        return sb.toString();
+    }
+
+    public static String caesarCipher(String message, int shift) {
+        StringBuilder result = new StringBuilder();
+
+        //Check for null
+        if (message == null || message.isEmpty()) {
+            return "";
+        }
+
+        for (int i = 0; i < message.length(); i++) {
+            char c = message.charAt(i);
+
+            if (Character.isUpperCase(c)) {
+                char encrypted = (char) (((c - 'A' + shift + 26) % 26) + 'A');
+                result.append(encrypted);
+
+            } else if (Character.isLowerCase(c)) {
+                char encrypted = (char) (((c - 'a' + shift + 26) % 26) + 'a');
+                result.append(encrypted);
+
+            } else {
+                // Leave numbers, spaces and punctuation unchanged
+                result.append(c);
+            }
+        }
+
+        return result.toString();
+
+    }
+
+    public static String decryptRot13(String s){
+
+        System.out.println();
+        System.out.println("Message after Decrypted");
+        return encryptRot13(s);
+    }
+    public static String decryptAtbash(String s){
+
+        if(s == null || s.isEmpty()){
+            System.exit(0);
+        }
+        StringBuilder sb = new StringBuilder();
+
+        // handling upper case
+        for(char ch: s.toCharArray()){
+            if(ch >= 'A' && ch <= 'Z'){
+                sb.append((char) ('Z' - ch + 'A'));
+
+                //Handling lower case
+            }else if(ch >= 'a' && ch <= 'z'){
+                sb.append((char) ('z' - ch + 'a'));
 
             }else{
                 sb.append(ch);
@@ -143,24 +206,16 @@ public class CypherTool {
         }
 
         System.out.println();
-        System.out.println("Message after encrypted");
+        System.out.println("Message after Decrypted");
         return sb.toString();
     }
-
-    public static String decryptRot13(String s){
-
-        s = " Hello decryptRot";
-
-        System.out.println();
-        System.out.println("Message after Decrypted");
-        return s;
+    // Encrypts the message using a Caesar Cipher with a shift of 3
+    public static String encryptCaesar(String message) {
+        return caesarCipher(message,3);
     }
-    public static String decryptAtbash(String s){
-        s = " Hello decryptAtBash";
-
-        System.out.println();
-        System.out.println("Message after Decrypted");
-        return s;
+    // Decrypts the message using a Caesar Cipher with a shift of -3
+    public static String decryptCaesar(String message) {
+        return caesarCipher(message, -3);
     }
 }
 
