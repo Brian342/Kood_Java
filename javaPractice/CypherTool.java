@@ -3,8 +3,15 @@ package javaPractice;
 import java.util.Scanner;
 
 public class CypherTool {
-    public static void main(String[] args){
-        InputData input =  getInput();
+    private static void checkForExit(String input){
+        if(input.equalsIgnoreCase("exit") || input.equals("0")){
+            System.out.println("Existing the System\nGoodbye!");
+            System.exit(0);
+        }
+    }
+    public static void main(String[] args) {
+        while (true) {
+            InputData input = getInput();
 
             // encryption code
             String res = ""; // placeholder for the message string
@@ -13,6 +20,7 @@ public class CypherTool {
                 res = switch (input.choice) {
                     case 1 -> encryptRot13(input.message);
                     case 2 -> encryptAtbash(input.message);
+                    case 3 -> encryptCaesar(input.message);
                     default -> "Invalid Choice of encyption";
                 };
 // decryption of the message
@@ -20,12 +28,14 @@ public class CypherTool {
                 res = switch (input.choice) {
                     case 1 -> decryptRot13(input.message);
                     case 2 -> decryptAtbash(input.message);
+                    case 3 -> decryptCaesar(input.message);
                     default -> "Invalid choice of decyption";
                 };
             }
 
             System.out.println(res);
         }
+    }
 
     public static InputData getInput() {
         Scanner scanner = new Scanner(System.in);
@@ -39,16 +49,18 @@ public class CypherTool {
                     1. Encrypt
                     2. Decrypt
                     :>\s""");
-            if (scanner.hasNextInt()) {
-                operation = scanner.nextInt();
+            String exitInput = scanner.next();
+            checkForExit(exitInput);
 
+            try {
+                operation = Integer.parseInt(exitInput);
                 if (operation == 1 || operation == 2) {
                     break;
                 } else {
                     System.out.println("Invalid choice! Please select 1 or 2.\n");
                 }
 
-            } else {
+            } catch (NumberFormatException e) {
                 System.out.println("Please Enter a valid number!\n");
                 scanner.next();
             }
@@ -60,19 +72,20 @@ public class CypherTool {
                     1. ROT13
                     2. Atbash
                     3. Caesar cypher
-                    4. Any other cypher
                     :>\s""");
 
-            if (scanner.hasNext()) {
-                choice = scanner.nextInt();
+            String exitInput = scanner.next();
+            checkForExit(exitInput);
 
+            try{
+                choice = Integer.parseInt(exitInput);
                 if (choice == 1 || choice == 2 || choice == 3 || choice == 4) {
                     break;
                 } else {
                     System.out.println("Invalid choice! Please select 1, 2, 3 or 4.\n");
                 }
 
-            } else {
+            } catch (NumberFormatException e) {
                 System.out.println("Please Enter a valid number!\n");
                 scanner.next();
             }
