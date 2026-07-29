@@ -25,3 +25,11 @@ public class userInputArray {
 scanner.close();
     }
 }
+/*
+* git status
+* git add .
+* git status
+* git commit -m"new code update"
+* git push
+*
+* */
